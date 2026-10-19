@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Swasthya Saathi — Your Health. Always Within Reach.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--g:#12382b;--g2:#1d5240;--mint:#e3f0e8;--sage:#c9dccf;--bg:#faf8f3;--ink:#23272a;--mut:#667068;--lime:#b9e04a;--red:#d9534f;--line:#dfe5dc;--r:14px}
+*{box-sizing:border-box}html,body{margin:0}body{font:15px/1.5 'Instrument Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;margin:0;letter-spacing:-.01em}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
+.btn{border:0;background:var(--g);color:#fff;padding:10px 18px;border-radius:10px;cursor:pointer;font-weight:600;transition:transform .12s,background .2s}
+.btn:hover{background:var(--g2)}.btn:active{transform:scale(.97)}.btn:disabled{opacity:.55;cursor:wait}
+.btn.sec{background:var(--mint);color:var(--g)}.btn.ghost{background:none;color:var(--g);border:1px solid var(--line)}.btn.red{background:var(--red)}.btn.sm{padding:6px 12px;font-size:13px}
+.full{width:100%}
+label{display:block;font-weight:600;font-size:13px;margin:12px 0 4px}
+input,select,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff}
+textarea{min-height:80px;resize:vertical}
+.err{color:var(--red);font-size:13px;min-height:18px;margin-top:6px}.ok{color:var(--g2)}
+.auth{display:grid;grid-template-columns:1.1fr 1fr;min-height:100vh}
+.hero{background:var(--g);color:#fff;padding:56px;display:flex;flex-direction:column;justify-content:space-between}
+.hero h1{font-size:44px;line-height:1.1;max-width:12ch}.hero p{color:#cfe3d6;max-width:40ch}
+.logo{font-family:Fraunces,serif;font-size:22px;display:flex;gap:10px;align-items:center}.logo i{width:30px;height:30px;border-radius:9px;background:var(--lime);color:var(--g);display:grid;place-items:center;font-style:normal;font-weight:700}
+.formwrap{display:grid;place-items:center;padding:28px}.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:0 1px 2px rgba(18,56,43,.05)}
+.form{width:100%;max-width:380px;animation:in .3s}.form h2{font-size:28px;margin-bottom:4px}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+.link{color:var(--g2);cursor:pointer;background:none;border:0;padding:0;font-weight:600;text-decoration:underline}
+.or{text-align:center;color:var(--mut);margin:14px 0;font-size:13px}
+.pw{position:relative}.pw button{position:absolute;right:6px;top:4px;border:0;background:none;color:var(--mut);cursor:pointer;padding:6px}
+.shell{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
+nav.side{background:var(--g);color:#fff;padding:20px 12px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:4px}
+nav.side .logo{padding:0 8px 18px}
+.nv{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:10px;color:#cfe3d6;background:none;border:0;cursor:pointer;text-align:left;width:100%;position:relative;transition:background .2s}
+.nv:hover{background:rgba(255,255,255,.08)}.nv.on{background:rgba(185,224,74,.16);color:#fff}.nv.on:before{content:"";position:absolute;left:-12px;top:10px;bottom:10px;width:4px;border-radius:0 4px 4px 0;background:var(--lime)}
+.nv.sos b{color:#ff8a85}
+main{padding:28px;max-width:1000px;width:100%;animation:in .3s}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.top h2{font-size:30px}
+.av{width:42px;height:42px;border-radius:50%;background:var(--sage);color:var(--g);display:grid;place-items:center;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.stat b{font:600 34px Fraunces,serif;color:var(--g);display:block}.stat span{color:var(--mut);font-size:13px}
+.sosbtn{background:var(--red);color:#fff;border:0;border-radius:var(--r);padding:18px 22px;font:600 20px Fraunces,serif;cursor:pointer;width:100%;text-align:left;margin-bottom:14px}
+.sync{font-size:12px;padding:4px 10px;border-radius:99px;background:var(--mint);color:var(--g);display:inline-flex;gap:6px;align-items:center}
+.sync.saving{background:#fff3cd;color:#7a5b00}.sync.error,.sync.offline{background:#fde4e2;color:#a33}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.grow{flex:1}
+.item{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:10px}
+.item h3{font-size:17px}.tag{font-size:12px;background:var(--mint);color:var(--g);padding:2px 9px;border-radius:99px}.tag.stop{background:#eee;color:#666}
+.mut{color:var(--mut);font-size:13px}.item p{margin:4px 0 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.empty{text-align:center;padding:36px;color:var(--mut);border:1.5px dashed var(--sage);border-radius:var(--r)}
+.tl{border-left:2px solid var(--sage);margin-left:8px;padding-left:18px}.tl .item{position:relative}.tl .item:before{content:"";position:absolute;left:-26px;top:22px;width:10px;height:10px;border-radius:50%;background:var(--g)}
+pre.sum{white-space:pre-wrap;background:var(--mint);padding:16px;border-radius:var(--r);font:14px/1.6 'Instrument Sans',sans-serif;margin:0}
+.warn{background:#fff3cd;border-radius:10px;padding:10px 14px;font-size:13px;margin:12px 0}
+#modal{position:fixed;inset:0;background:rgba(18,56,43,.45);display:none;place-items:center;padding:16px;z-index:20}
+#modal.on{display:grid}#modal .card{width:100%;max-width:460px;max-height:92vh;overflow:auto;animation:in .2s}
+#toast{position:fixed;bottom:84px;left:50%;transform:translateX(-50%);z-index:30;display:grid;gap:8px}
+#toast div{background:var(--g);color:#fff;padding:10px 16px;border-radius:10px;animation:in .2s}#toast div.bad{background:var(--red)}
+.load{display:grid;place-items:center;min-height:100vh;color:var(--mut)}
+@media(max-width:820px){.auth{grid-template-columns:1fr}.hero{display:none}
+.shell{grid-template-columns:1fr;padding-bottom:70px}
+nav.side{position:fixed;bottom:0;left:0;right:0;top:auto;height:auto;flex-direction:row;overflow-x:auto;padding:6px;z-index:10;gap:0}
+nav.side .logo{display:none}.nv{flex-direction:column;gap:0;padding:6px 10px;font-size:11px;width:auto;min-width:64px;align-items:center}.nv.on:before{display:none}
+main{padding:18px}.top h2{font-size:24px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<div id="app"><div class="load">Loading…</div></div><div id="modal" role="dialog" aria-modal="true"></div><div id="toast" aria-live="polite"></div>
+<script type="module">
+/* ===== 1. CONFIGURATION — paste your own Firebase web-app config here (Project settings → Your apps → Web) ===== */
+const firebaseConfig={apiKey:"AIzaSyBCivJGxDU6Pd0j3M9wutAZi7FXFQYnHmY",authDomain:"swasthya-saathi01.firebaseapp.com",projectId:"swasthya-saathi01",storageBucket:"swasthya-saathi01.firebasestorage.app",messagingSenderId:"325378745242",appId:"1:325378745242:web:fbfa0a39d48081c0fd1023"};
+const V="10.12.2",CDN="https://www.gstatic.com/firebasejs/"+V+"/";
+const {initializeApp}=await import(CDN+"firebase-app.js");
+const A=await import(CDN+"firebase-auth.js"),F=await import(CDN+"firebase-firestore.js");
+const configured=!firebaseConfig.apiKey.startsWith("YOUR_");
+const app=initializeApp(firebaseConfig),auth=A.getAuth(app),db=F.getFirestore(app);
+
+/* ===== helpers ===== */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const toast=(m,bad)=>{const d=document.createElement("div");d.textContent=m;if(bad)d.className="bad";$("#toast").append(d);setTimeout(()=>d.remove(),3800)};
+const S={
+ record:{t:"Health records",one:"record",f:[["title","Title","text",1],["category","Category","select",["Condition","Allergy","Procedure","Note","Other"]],["date","Date","date"],["details","Details","textarea"]],filter:"category"},
+ medicine:{t:"Medicines",one:"medicine",f:[["title","Medicine name","text",1],["instructions","Instructions (as given by your doctor/pharmacist)","textarea"],["date","Start date","date"],["status","Status","select",["Active","Stopped"]],["details","Notes","textarea"]],filter:"status"},
+ vaccine:{t:"Vaccinations",one:"vaccination",f:[["title","Vaccine","text",1],["dose","Dose number / description","text"],["date","Date","date"],["details","Provider / notes","textarea"]]}};
+const NAV=[["dash","Home","⌂"],["record","Records","✚"],["medicine","Medicines","℞"],["vaccine","Vaccines","✓"],["emergency","Emergency ID","♥"],["sos","SOS","!"],["settings","Settings","⚙"]];
+const st={ready:false,user:null,items:[],prof:{},view:"dash",sync:"saved",q:"",flt:"",mode:"login",oob:null,last:null};
+const SYNC={saved:"All changes saved",saving:"Saving changes…",offline:"Offline — changes not synchronised",error:"Could not save — retry"};
+const setSync=s=>{st.sync=navigator.onLine||s==="saving"?s:"offline";document.querySelectorAll(".sync").forEach(e=>{e.className="sync "+st.sync;e.innerHTML=esc(SYNC[st.sync])+(st.sync==="error"?' <button class="link" data-act="retry">Retry</button>':"")})};
+const syncTag=()=>`<span class="sync ${st.sync}">${esc(SYNC[st.sync])}</span>`;
+async function save(fn){st.last=fn;setSync("saving");try{await Promise.race([fn(),new Promise((_,j)=>setTimeout(()=>j(new Error("timeout")),12000))]);setSync("saved");return true}catch(e){setSync("error");toast(e.code==="permission-denied"?"Not allowed by security rules.":"Could not save. Check your connection and retry.",1);return false}}
+addEventListener("online",()=>setSync(st.sync==="offline"?"saved":st.sync));addEventListener("offline",()=>setSync("offline"));
+
+/* ===== auth errors ===== */
+const AE=c=>({"auth/invalid-email":"Enter a valid email address.","auth/email-already-in-use":"An account with this email may already exist. Try signing in.","auth/weak-password":"Choose a stronger password.","auth/invalid-credential":"Incorrect email or password.","auth/user-not-found":"Incorrect email or password.","auth/wrong-password":"Incorrect email or password.","auth/too-many-requests":"Too many attempts. Wait a few minutes and try again.","auth/network-request-failed":"Network error. Check your connection.","auth/popup-closed-by-user":"Google sign-in was cancelled.","auth/cancelled-popup-request":"Google sign-in was cancelled.","auth/popup-blocked":"Popup blocked. Allow popups and try again.","auth/account-exists-with-different-credential":"This email already uses another sign-in method. Sign in with it first.","auth/expired-action-code":"This reset link has expired. Request a new one.","auth/invalid-action-code":"This reset link is invalid or was already used.","auth/requires-recent-login":"Please sign in again to continue.","auth/operation-not-allowed":"This sign-in method is not enabled in Firebase."}[c]||"Something went wrong. Please try again.");
+const pwOk=p=>p.length>=8&&/[A-Za-z]/.test(p)&&/\d/.test(p);
+const PWMSG="Use at least 8 characters, with a letter and a number.";
+
+/* ===== auth view ===== */
+function authView(){
+ const m=st.mode,pw=(id,l)=>`<label for="${id}">${l}</label><div class="pw"><input id="${id}" name="${id}" type="password" autocomplete="${id==="pw"&&m==="login"?"current-password":"new-password"}" required><button type="button" data-act="eye" aria-label="Show or hide password">Show</button></div>`;
+ const G=`<button type="button" class="btn ghost full" data-act="google">Continue with Google</button><div class="or">or use email</div>`;
+ const F={
+ login:`<h2>Welcome back</h2><p class="mut">Sign in to open your health records.</p>${G}<form data-f="login" novalidate><label for="em">Email</label><input id="em" name="em" type="email" autocomplete="email" required>${pw("pw","Password")}<div class="row" style="justify-content:space-between;margin-top:10px"><label style="margin:0;font-weight:500"><input type="checkbox" name="rem" checked style="width:auto"> Keep me signed in</label><button type="button" class="link" data-mode="forgot">Forgot password?</button></div><div class="err" role="alert"></div><button class="btn full">Sign in</button></form><p class="mut">New here? <button class="link" data-mode="signup">Create an account</button></p>`,
+ signup:`<h2>Create your account</h2><p class="mut">Takes under a minute.</p>${G}<form data-f="signup" novalidate><label for="nm">Full name</label><input id="nm" name="nm" autocomplete="name" required maxlength="80"><label for="em">Email</label><input id="em" name="em" type="email" autocomplete="email" required>${pw("pw","Password")}${pw("pw2","Confirm password")}<div class="err" role="alert"></div><button class="btn full">Create account</button></form><p class="mut">Already registered? <button class="link" data-mode="login">Sign in</button></p>`,
+ forgot:`<h2>Reset your password</h2><p class="mut">Enter your email and we'll send a reset link if an account exists.</p><form data-f="forgot" novalidate><label for="em">Email</label><input id="em" name="em" type="email" autocomplete="email" required><div class="err" role="alert"></div><button class="btn full">Send reset link</button></form><p class="mut"><button class="link" data-mode="login">Back to sign in</button></p>`,
+ reset:`<h2>Choose a new password</h2>${st.oob?.err?`<div class="err">${esc(st.oob.err)}</div><p><button class="link" data-mode="forgot">Request a new link</button></p>`:`<p class="mut">For ${esc(st.oob?.email||"")}</p><form data-f="reset" novalidate>${pw("pw","New password")}${pw("pw2","Confirm new password")}<div class="err" role="alert"></div><button class="btn full">Save new password</button></form>`}`}[m];
+ $("#app").innerHTML=`<div class="auth"><section class="hero"><div class="logo"><i>S</i>Swasthya Saathi</div><div><h1>Your Health. Always Within Reach.</h1><p>Keep allergies, medicines, vaccinations and emergency contacts in one private place, ready when you can't explain them yourself.</p></div><p style="font-size:13px">Your records are stored in your private cloud account. This app is not a medical device and does not replace professional care.</p></section><section class="formwrap"><div class="form" key="${m}">${configured?"":'<div class="warn"><b>Setup needed:</b> add your Firebase config in the HTML file (see setup guide). Sign-in will not work until then.</div>'}${F}</div></section></div>`}
+
+/* ===== auth actions ===== */
+const prov=()=>st.user?.providerData.map(p=>p.providerId)||[];
+async function ensureProfile(u){const r=F.doc(db,"users",u.uid);try{const s=await F.getDoc(r);if(!s.exists())await F.setDoc(r,{name:u.displayName||"",email:u.email||"",created:Date.now(),sos:"112"})}catch(e){}}
+async function submitAuth(form){
+ const f=form.dataset.f,d=Object.fromEntries(new FormData(form)),e=form.querySelector(".err"),b=form.querySelector(".btn");if(b.disabled)return;
+ const fail=t=>{e.textContent=t;e.className="err"};
+ const em=(d.em||"").trim();
+ if(f!=="reset"&&!/^\S+@\S+\.\S+$/.test(em))return fail("Enter a valid email address.");
+ if(f==="signup"){if(!d.nm.trim())return fail("Enter your full name.");if(!pwOk(d.pw))return fail(PWMSG);if(d.pw!==d.pw2)return fail("Passwords do not match.")}
+ if(f==="reset"){if(!pwOk(d.pw))return fail(PWMSG);if(d.pw!==d.pw2)return fail("Passwords do not match.")}
+ b.disabled=true;e.textContent="";
+ try{
+  if(f==="login"){await A.setPersistence(auth,d.rem?A.browserLocalPersistence:A.browserSessionPersistence);await A.signInWithEmailAndPassword(auth,em,d.pw)}
+  if(f==="signup"){const c=await A.createUserWithEmailAndPassword(auth,em,d.pw);await A.updateProfile(c.user,{displayName:d.nm.trim()});await F.setDoc(F.doc(db,"users",c.user.uid),{name:d.nm.trim(),email:em,created:Date.now(),sos:"112"});try{await A.sendEmailVerification(c.user)}catch(_){}toast("Account created. Check your email to verify it.")}
+  if(f==="forgot"){try{await A.sendPasswordResetEmail(auth,em)}catch(x){if(x.code==="auth/network-request-failed")throw x}e.className="err ok";e.textContent="If an account exists for that email, a reset link is on its way.";b.disabled=false;return}
+  if(f==="reset"){await A.confirmPasswordReset(auth,st.oob.code,d.pw);history.replaceState(null,"",location.pathname);st.oob=null;st.mode="login";toast("Password updated. Sign in with your new password.");authView();return}
+ }catch(x){fail(AE(x.code));b.disabled=false}
+}
+async function google(){try{await A.signInWithPopup(auth,new A.GoogleAuthProvider())}catch(x){const e=document.querySelector(".err");if(e)e.textContent=AE(x.code);else toast(AE(x.code),1)}}
+
+/* ===== data ===== */
+let unsubs=[];
+function listen(u){
+ unsubs.push(F.onSnapshot(F.collection(db,"users",u.uid,"items"),{includeMetadataChanges:true},s=>{st.items=s.docs.map(d=>({id:d.id,...d.data()}));if(s.metadata.fromCache&&!navigator.onLine)setSync("offline");if(!["emergency","settings"].includes(st.view))page();},()=>setSync("error")));
+ unsubs.push(F.onSnapshot(F.doc(db,"users",u.uid),s=>{st.prof=s.data()||{};if(!["emergency"].includes(st.view))page()}));
+}
+const mine=t=>st.items.filter(i=>i.type===t);
+const itemRef=id=>F.doc(db,"users",st.user.uid,"items",id);
+const profRef=()=>F.doc(db,"users",st.user.uid);
+const sum=()=>{const p=st.prof,l=(c)=>mine("record").filter(r=>r.category===c).map(r=>r.title).join(", ")||"None recorded",meds=mine("medicine").filter(m=>m.status!=="Stopped").map(m=>m.title).join(", ")||"None recorded";
+ return`EMERGENCY MEDICAL SUMMARY\nName: ${p.name||st.user.displayName||"—"}\nBlood group: ${p.blood||"Unknown"}\nAllergies: ${l("Allergy")}\nConditions: ${l("Condition")}\nCurrent medicines: ${meds}\nPrimary contact: ${p.c1n?p.c1n+" — "+(p.c1p||""):"—"}\nSecondary contact: ${p.c2n?p.c2n+" — "+(p.c2p||""):"—"}\nPreferred hospital: ${p.hosp||"—"}\nNotes: ${p.notes||"—"}\n(Self-reported information. Verify with medical professionals.)`};
+
+/* ===== app views ===== */
+function appView(){
+ const u=st.user,ini=(u.displayName||u.email||"?")[0].toUpperCase();
+ $("#app").innerHTML=`<div class="shell"><nav class="side" aria-label="Main"><div class="logo"><i>S</i>Swasthya Saathi</div>${NAV.map(n=>`<button class="nv ${n[0]==="sos"?"sos":""} ${st.view===n[0]?"on":""}" data-view="${n[0]}" ${st.view===n[0]?'aria-current="page"':""}><b aria-hidden="true">${n[2]}</b>${n[1]}</button>`).join("")}</nav><main id="main"></main></div>`;page()}
+function page(){
+ const m=$("#main");if(!m||!st.user)return;
+ document.querySelectorAll(".nv").forEach(b=>{const on=b.dataset.view===st.view;b.classList.toggle("on",on);on?b.setAttribute("aria-current","page"):b.removeAttribute("aria-current")});
+ const u=st.user,v=st.view,ini=(u.displayName||u.email||"?")[0].toUpperCase(),top=(t,x="")=>`<div class="top"><h2>${t}</h2><div class="row">${x}${syncTag()}</div></div>`;
+ if(v==="dash"){
+  const recent=[...st.items].sort((a,b)=>(b.ts||0)-(a.ts||0)).slice(0,5),nm=(st.prof.name||u.displayName||"there").split(" ")[0],hasC=!!(st.prof.c1n&&st.prof.c1p);
+  m.innerHTML=`<div class="top"><div><h2>Hello, ${esc(nm)}</h2><span class="mut">Your health, ready when it matters.</span></div><div class="row">${syncTag()}<div class="av" aria-hidden="true">${esc(ini)}</div></div></div>
+  ${u.emailVerified||!prov().includes("password")?"":'<div class="warn">Please verify your email address using the link we sent. <button class="link" data-act="verify">Resend</button></div>'}
+  <button class="sosbtn" data-view="sos">Emergency SOS<br><span style="font:400 14px Instrument Sans">Open your summary and call for help</span></button>
+  <div class="grid"><div class="card stat"><b>${mine("record").length}</b><span>Health records</span></div><div class="card stat"><b>${mine("medicine").filter(x=>x.status!=="Stopped").length}</b><span>Active medicines</span></div><div class="card stat"><b>${mine("vaccine").length}</b><span>Vaccinations</span></div><div class="card stat"><b>${hasC?"Set":"Missing"}</b><span>Primary emergency contact</span></div></div>
+  <h3 style="margin:24px 0 10px">Quick actions</h3><div class="row"><button class="btn sec" data-add="record">Add record</button><button class="btn sec" data-add="medicine">Add medicine</button><button class="btn sec" data-add="vaccine">Add vaccination</button><button class="btn sec" data-view="emergency">Edit emergency ID</button></div>
+  <h3 style="margin:24px 0 10px">Recent activity</h3>${recent.length?recent.map(i=>`<div class="card item"><div><b>${esc(i.title)}</b><div class="mut">${esc(S[i.type].one)} · ${new Date(i.ts||0).toLocaleDateString()}</div></div></div>`).join(""):'<div class="empty">Nothing here yet. Add your allergies and medicines first.</div>'}
+  <div class="warn" style="margin-top:20px">Privacy reminder: only you can read these records. Don't share your password, and keep your emergency contacts current.</div>`}
+ else if(S[v]){
+  const c=S[v];m.innerHTML=top(c.t,`<button class="btn" data-add="${v}">Add ${c.one}</button>`)+`<div class="row" style="margin-bottom:14px"><input class="grow" id="q" placeholder="Search ${c.t.toLowerCase()}" aria-label="Search" value="${esc(st.q)}">${c.filter?`<select id="flt" aria-label="Filter" style="width:auto"><option value="">All</option>${c.f.find(x=>x[0]===c.filter)[3].map(o=>`<option ${st.flt===o?"selected":""}>${o}</option>`).join("")}</select>`:""}</div><div id="list"></div>`;list()}
+ else if(v==="emergency"){
+  const p=st.prof,i=(k,l,ph="")=>`<label for="${k}">${l}</label><input id="${k}" name="${k}" value="${esc(p[k])}" maxlength="120" placeholder="${ph}">`;
+  m.innerHTML=top("Emergency ID")+`<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))"><form class="card" data-f="prof">${i("name","Name")}<label for="blood">Blood group (if known)</label><select id="blood" name="blood">${["","A+","A-","B+","B-","AB+","AB-","O+","O-"].map(o=>`<option ${p.blood===o?"selected":""} value="${o}">${o||"Unknown"}</option>`).join("")}</select>${i("c1n","Primary contact name")}${i("c1p","Primary contact phone","+91…")}${i("c2n","Secondary contact name (optional)")}${i("c2p","Secondary contact phone")}${i("hosp","Preferred hospital or service")}${i("sos","Emergency number","112")}<label for="notes">Emergency notes</label><textarea id="notes" name="notes" maxlength="600">${esc(p.notes)}</textarea><br><button class="btn full">Save emergency ID</button></form>
+  <div><pre class="sum" id="sum">${esc(sum())}</pre><div class="row" style="margin-top:12px"><button class="btn sec" data-act="copy">Copy</button><button class="btn sec" data-act="print">Print</button></div><p class="mut">Allergies, conditions and medicines are pulled from your records. Save the form to refresh this preview.</p></div></div>`}
+ else if(v==="sos"){
+  const p=st.prof,n=esc((p.sos||"112").replace(/[^\d+]/g,"")),ph=x=>esc((x||"").replace(/[^\d+]/g,""));
+  m.innerHTML=top("Emergency SOS")+`<div class="warn"><b>Limits:</b> this app does not contact anyone by itself. Buttons below open your phone's dialer so you can place the call. No location is shared and no alerts are sent automatically.</div><div class="row" style="margin-bottom:16px"><a class="btn red" href="tel:${n}" style="text-decoration:none">Call ${n}</a>${p.c1p?`<a class="btn" style="text-decoration:none" href="tel:${ph(p.c1p)}">Call ${esc(p.c1n||"contact")}</a>`:""}${p.c2p?`<a class="btn" style="text-decoration:none" href="tel:${ph(p.c2p)}">Call ${esc(p.c2n||"contact")}</a>`:""}</div><pre class="sum">${esc(sum())}</pre><div class="row" style="margin-top:12px"><button class="btn sec" data-act="share">Share summary…</button><button class="btn sec" data-view="emergency">Edit emergency ID</button></div>`}
+ else if(v==="settings"){
+  m.innerHTML=top("Settings")+`<div class="card"><h3>Account</h3><p><b>${esc(u.displayName||"—")}</b><br>${esc(u.email||"")}<br><span class="mut">Sign-in method: ${prov().includes("google.com")?"Google":""}${prov().includes("password")?(prov().length>1?" + ":"")+"Email and password":""}</span></p><form data-f="name" class="row"><input class="grow" name="nm" value="${esc(u.displayName)}" maxlength="80" aria-label="Full name"><button class="btn sec">Update name</button></form></div>
+  <div class="card" style="margin-top:14px"><h3>Your data</h3><p class="mut">Records live in your private cloud account. Clearing browser data or logging out does not delete them.</p><div class="row"><button class="btn sec" data-act="export">Export data (JSON)</button><button class="btn ghost" data-act="logout">Log out</button></div></div>
+  <div class="card" style="margin-top:14px"><h3>Privacy</h3><p class="mut">You decide what to store. Only your signed-in account can read it, enforced by Firestore security rules. Avoid entering more than you need.</p></div>
+  <div class="card" style="margin-top:14px;border-color:#f1c4c1"><h3>Delete account</h3><p class="mut">Permanently deletes your profile, all records, medicines, vaccinations and emergency ID, then your sign-in. This cannot be undone.</p><button class="btn red" data-act="delacct">Delete my account…</button></div>`}
+}
+function list(){
+ const c=S[st.view],q=st.q.toLowerCase(),box=$("#list");if(!box)return;
+ let a=mine(st.view).filter(i=>(!st.flt||i[c.filter]===st.flt)&&(!q||JSON.stringify(Object.values(i)).toLowerCase().includes(q)));
+ a.sort((x,y)=>st.view==="vaccine"?(x.date||"").localeCompare(y.date||""):(y.ts||0)-(x.ts||0));
+ box.className=st.view==="vaccine"?"tl":"";
+ box.innerHTML=a.length?a.map(i=>`<div class="card item"><div><h3>${esc(i.title)}</h3><div class="row">${i.category?`<span class="tag">${esc(i.category)}</span>`:""}${i.status?`<span class="tag ${i.status==="Stopped"?"stop":""}">${esc(i.status)}</span>`:""}<span class="mut">${esc(i.date||"")}${i.dose?" · "+esc(i.dose):""}</span></div>${i.instructions?`<p>${esc(i.instructions)}</p>`:""}${i.details?`<p class="mut">${esc(i.details)}</p>`:""}</div><div class="row"><button class="btn sm sec" data-edit="${esc(i.id)}">Edit</button><button class="btn sm ghost" data-del="${esc(i.id)}">Delete</button></div></div>`).join(""):`<div class="empty">${st.q||st.flt?"No matches.":"No "+c.t.toLowerCase()+" yet."} <br><button class="link" data-add="${st.view}">Add ${c.one}</button></div>`}
+
+/* ===== modals ===== */
+const modal=h=>{const m=$("#modal");m.innerHTML=`<div class="card">${h}</div>`;m.classList.add("on");m.querySelector("input,textarea,button")?.focus()};
+const close=()=>{$("#modal").classList.remove("on");$("#modal").innerHTML=""};
+addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+function itemForm(t,id){
+ const c=S[t],it=id?st.items.find(x=>x.id===id):{};
+ modal(`<h3>${id?"Edit":"Add"} ${c.one}</h3><form data-f="item" data-t="${t}" data-id="${esc(id||"")}" novalidate>${c.f.map(([k,l,ty,x])=>`<label for="m_${k}">${l}</label>`+(ty==="select"?`<select id="m_${k}" name="${k}">${x.map(o=>`<option ${it[k]===o?"selected":""}>${o}</option>`).join("")}</select>`:ty==="textarea"?`<textarea id="m_${k}" name="${k}" maxlength="1000">${esc(it[k])}</textarea>`:`<input id="m_${k}" name="${k}" type="${ty}" value="${esc(it[k])}" maxlength="200" ${x===1?"required":""}>`)).join("")}<div class="err" role="alert"></div><div class="row" style="margin-top:14px"><button class="btn">Save ${c.one}</button><button type="button" class="btn ghost" data-act="close">Cancel</button></div></form>`)}
+function confirmBox(msg,label,fn,extra=""){modal(`<h3>Are you sure?</h3><p>${msg}</p>${extra}<div class="err" role="alert"></div><div class="row"><button class="btn red" id="cok">${label}</button><button class="btn ghost" data-act="close">Cancel</button></div>`);$("#cok").onclick=async e=>{e.target.disabled=true;try{await fn()}catch(x){document.querySelector("#modal .err").textContent=AE(x.code);e.target.disabled=false}}}
+
+/* ===== delete account / export ===== */
+async function wipe(){
+ const u=st.user;
+ if(prov().includes("password")){const pw=$("#dpw")?.value;if(!pw)throw{code:"auth/invalid-credential"};await A.reauthenticateWithCredential(u,A.EmailAuthProvider.credential(u.email,pw))}
+ else await A.reauthenticateWithPopup(u,new A.GoogleAuthProvider());
+ const s=await F.getDocs(F.collection(db,"users",u.uid,"items"));let b=F.writeBatch(db),n=0;
+ for(const d of s.docs){b.delete(d.ref);if(++n%400===0){await b.commit();b=F.writeBatch(db)}}
+ b.delete(profRef());await b.commit();await A.deleteUser(u);close();toast("Account and data deleted.")}
+function exportData(){
+ const blob=new Blob([JSON.stringify({exported:new Date().toISOString(),profile:st.prof,items:st.items},null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="swasthya_saathi_export.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}
+
+/* ===== events ===== */
+document.addEventListener("click",async e=>{
+ const t=e.target.closest("button,a,[data-view]");if(!t)return;const D=t.dataset;
+ if(D.mode){st.mode=D.mode;authView()}
+ else if(D.view){st.view=D.view;st.q="";st.flt="";page();scrollTo(0,0)}
+ else if(D.add)itemForm(D.add);
+ else if(D.edit)itemForm(st.view,D.edit);
+ else if(D.del)confirmBox("This record will be permanently deleted from your account.","Delete",async()=>{close();await save(()=>F.deleteDoc(itemRef(D.del)))});
+ else if(D.act==="eye"){const i=t.previousElementSibling;i.type=i.type==="password"?"text":"password";t.textContent=i.type==="password"?"Show":"Hide"}
+ else if(D.act==="google")google();
+ else if(D.act==="close")close();
+ else if(D.act==="retry"&&st.last)save(st.last);
+ else if(D.act==="logout")A.signOut(auth);
+ else if(D.act==="verify"){try{await A.sendEmailVerification(st.user);toast("Verification email sent.")}catch(x){toast(AE(x.code),1)}}
+ else if(D.act==="copy"){try{await navigator.clipboard.writeText(sum());toast("Summary copied.")}catch{toast("Copy failed. Select the text manually.",1)}}
+ else if(D.act==="print"){const w=open("","_blank");if(w){w.document.write("<pre style='font:16px/1.7 sans-serif;white-space:pre-wrap'>"+esc(sum())+"</pre>");w.document.close();w.print()}}
+ else if(D.act==="share")confirmBox("Your medical summary will be handed to the app you choose. Share only with people you trust.","Share",async()=>{close();if(navigator.share)try{await navigator.share({title:"Emergency summary",text:sum()})}catch{}else{await navigator.clipboard.writeText(sum());toast("Sharing isn't supported here. Summary copied instead.")}});
+ else if(D.act==="export")exportData();
+ else if(D.act==="delacct")confirmBox("This permanently deletes your account and all health data stored with it.","Delete everything",wipe,prov().includes("password")?'<label for="dpw">Enter your password to confirm</label><input id="dpw" type="password" autocomplete="current-password">':'<p class="mut">You will be asked to sign in with Google again.</p>');
+});
+document.addEventListener("input",e=>{if(e.target.id==="q"){st.q=e.target.value;list()}});
+document.addEventListener("change",e=>{if(e.target.id==="flt"){st.flt=e.target.value;list()}});
+document.addEventListener("submit",async e=>{
+ e.preventDefault();const f=e.target,k=f.dataset.f;if(!k)return;
+ if(["login","signup","forgot","reset"].includes(k))return submitAuth(f);
+ const d=Object.fromEntries(new FormData(f));
+ if(k==="item"){
+  const t=f.dataset.t,err=f.querySelector(".err");if(!d.title.trim()){err.textContent="Enter a title.";return}
+  const id=f.dataset.id||F.doc(F.collection(db,"users",st.user.uid,"items")).id,data={...d,title:d.title.trim(),type:t,owner:st.user.uid,ts:Date.now()};
+  close();if(await save(()=>F.setDoc(itemRef(id),data)))toast("Saved.")}
+ if(k==="prof"){if(await save(()=>F.setDoc(profRef(),d,{merge:true}))){toast("Emergency ID saved.");page()}}
+ if(k==="name"){const nm=d.nm.trim();if(!nm)return;if(await save(async()=>{await A.updateProfile(st.user,{displayName:nm});await F.setDoc(profRef(),{name:nm},{merge:true})})){toast("Name updated.");page()}}
+});
+
+/* ===== boot ===== */
+async function boot(){
+ const q=new URLSearchParams(location.search);
+ if(q.get("mode")==="resetPassword"&&q.get("oobCode")){
+  st.mode="reset";st.oob={code:q.get("oobCode")};
+  try{st.oob.email=await A.verifyPasswordResetCode(auth,st.oob.code)}catch(x){st.oob.err=AE(x.code)}}
+ A.onAuthStateChanged(auth,async u=>{
+  unsubs.forEach(f=>f());unsubs=[];st.user=u;st.items=[];st.prof={};st.ready=true;
+  if(u){if(st.mode==="reset"&&st.oob){/* signed-in user opened a reset link: still show it */}
+   await ensureProfile(u);st.mode="login";st.view="dash";appView();listen(u)}
+  else{if(!st.oob)st.mode="login";authView()}});
+}
+boot();
+</script></body></html>
